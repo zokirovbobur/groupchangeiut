@@ -11,7 +11,7 @@ public class TimeController {
 
     @GetMapping("start")
     public String start(){
-        final String uri = "http://mkreq.herokuapp.com/connect";
+        final String uri = "https://mkreq.herokuapp.com/connect";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
@@ -20,7 +20,7 @@ public class TimeController {
     }
     @GetMapping("res")
     public void res(){
-        final String uri = "http://mkreq.herokuapp.com/res";
+        final String uri = "https://mkreq.herokuapp.com/res";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
