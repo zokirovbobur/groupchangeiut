@@ -10,12 +10,13 @@ import org.springframework.web.client.RestTemplate;
 public class TimeController {
 
     @GetMapping("start")
-    public void start(){
+    public String start(){
         final String uri = "https://reqforbbro.herokuapp.com/connect";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
         System.out.println(result);
+        return "started";
     }
     @GetMapping("res")
     public void res(){
