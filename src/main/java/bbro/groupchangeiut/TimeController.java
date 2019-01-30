@@ -13,7 +13,7 @@ public class TimeController {
 
     @GetMapping("time/res")
     public String res() throws UnknownHostException {
-        final String uri = "http://localhost:8081/res";
+        final String uri = "https://mkreq.herokuapp.com/res";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
