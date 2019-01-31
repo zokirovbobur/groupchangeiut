@@ -1,6 +1,5 @@
 package bbro.groupchangeiut.student;
 
-import org.apache.logging.log4j.message.StructuredDataCollectionMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,14 +41,28 @@ public class StudentService {
         repository.save(student);
         return true;
     }
+    public boolean editStudent(Student student){
+        if (checkPin(student)){
+            repository.save(student);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     public boolean checkPin(Student student){
         int pinFromDB = repository.findByStudentId(student.getStudentId()).getPin();
 
         return (student.getPin() == pinFromDB);
     }
     public boolean deleteStudent(Student student){
-        repository.delete(student);
-        return true;
+        if (checkPin(student)){
+            deleteStudent(student);
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public Student findByFullName(String fullName){
         return repository.findByFullName(fullName).nullPin();

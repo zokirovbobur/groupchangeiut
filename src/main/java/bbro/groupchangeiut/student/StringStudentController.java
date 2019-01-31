@@ -6,14 +6,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("student")
-public class StudentController {
+@RequestMapping("strStudent")
+public class StringStudentController {
 
     @Autowired
     private StudentService service;
 
     @GetMapping("all")
-    public List<Student> getAllStudent(){return service.getAllStudents();}
+    public List<Student> getAllStudent(){
+        return service.getAllStudents();
+    }
 
     @GetMapping
     public Student sampleStudent(){
@@ -21,13 +23,17 @@ public class StudentController {
     }
 
     @PostMapping
-    public void postStudent(@RequestBody Student student){service.postStudent(student);}
+    public void postStudent(@RequestBody String studentString){service.postStudent(new Student(studentString));}
 
     @PutMapping
-    public boolean editStudent(@RequestBody Student student){return service.editStudent(student);}
+    public boolean editStudent(@RequestBody String studentString){
+        return service.editStudent(new Student(studentString));
+    }
 
     @DeleteMapping
-    public boolean deleteStudent(@RequestBody Student student){return service.deleteStudent(student);}
+    public boolean deleteStudent(@RequestBody String studentString){
+        return service.deleteStudent(new Student(studentString));
+    }
 
     @GetMapping("allToGroup/{grName}")
     public List<Student> allTG(@PathVariable String grName){

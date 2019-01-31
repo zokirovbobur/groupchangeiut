@@ -11,9 +11,9 @@ import java.net.UnknownHostException;
 public class TimeController {
 
 
-    @GetMapping("time/res")
+    @GetMapping("time")
     public String res() throws UnknownHostException {
-        final String uri = "https://mkreq.herokuapp.com/res";
+        final String uri = "http://mkreq.herokuapp.com";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
 
